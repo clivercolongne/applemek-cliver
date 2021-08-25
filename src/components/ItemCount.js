@@ -1,30 +1,20 @@
 import React, { useState } from 'react';
 
-function ItemCount({ stock, initial }) {
+function ItemCount({ stock, initial , onAdd}) {
     const [count, setCount] = useState(initial);
-    const onAdd = () => {
-      if (count > stock) {
-        alert("superaste el limite de stock");
-    } else {
-      setCount(count + 1);
-    }
-    };
-    console.log("initial" ,initial);
     const resItem = () => {
         setCount(count - 1);  
         }
-
-
-
-
+    const sumItem=()=>{
+      setCount(count + 1); 
+    }
     return (
-        <div>
-      <label>{count}</label>
-
-      <button onClick={onAdd}>+</button>
+      <div>
+      <button onClick={sumItem}>+</button>
+          <label>{count}</label>
       <button disabled={count < 1} onClick={resItem}>-</button>
         </div>
     )
-}
+};
 
 export default ItemCount
