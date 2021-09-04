@@ -3,14 +3,21 @@ import Item from './Item'
 
 
 
-function ItemList() {
+
+
+const ItemList = ({items}) => {
       
-    return (
-        <div>
-          <Item/>  
-            
-        </div>
-    )
+  return (
+      <div>
+        <h1>MIS PRODUCTOS</h1>
+        <ul>
+        {items.map((item)=>{
+          return <Item key={item.id} item={item}/>
+      })}
+      </ul>
+         
+      </div>
+  )
 }
 
 export default ItemList

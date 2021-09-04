@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const ItemCount =({ stock, initial , onAdd}) => {
     const [count, setCount] = useState(initial);
     const sumItem =()=>{
-      setCount(count +1)        
+        count > stock ? alert("superaste el limite de productos") : setCount(count +1) 
   };
   const resItem =()=>{
       if(count > initial) setCount(count - 1)
@@ -12,6 +12,7 @@ const ItemCount =({ stock, initial , onAdd}) => {
       onAdd(count)
       setCount(initial)
   };
+   
     return (
       <div>
       <button onClick={sumItem}>+</button>
