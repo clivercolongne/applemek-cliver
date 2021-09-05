@@ -1,5 +1,6 @@
 .tamanoCard{
-    width: 18rem
+    width: 18rem;
+    padding:3px
 }
 .ubicacionDiv{
     margin-left: 50%;
