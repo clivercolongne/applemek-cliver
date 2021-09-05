@@ -4,7 +4,7 @@ import items from './ItemListContainer'
 
   const getItem = new Promise((resuelto)=>{
       setTimeout(() => {
-       resuelto(items)   
+       resuelto(items[0])   
       }, 5000);
   })
 
@@ -17,8 +17,11 @@ function ItemDetailConteiner() {
        .then(resp => setItem(resp))
     }, [])
 
+    if (item === undefined)
+  return <p>Loading...</p>;
     return (
         <>
+        
          <ItemDetail item = {item}/>   
         </>
     )
