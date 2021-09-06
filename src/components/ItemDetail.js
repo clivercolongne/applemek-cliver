@@ -1,8 +1,9 @@
-
+import React from "react"
 
 
 
 function ItemDetail({item}) {
+    
     return (
         <div>
              <div>
@@ -12,7 +13,7 @@ function ItemDetail({item}) {
                 <label>{item.nombre}</label>
             </div>
             <div className="container">
-                <img  src={item.pictureUrl} className="w-25" />
+                <img  src={item.pictureUrl} alt="soy una imagen" className="w-25" />
                 <br/>
                 <label>{item.descripcion}</label>
             </div>

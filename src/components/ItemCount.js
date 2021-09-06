@@ -15,10 +15,10 @@ const ItemCount =({ stock, initial , onAdd}) => {
    
     return (
       <div>
-      <button onClick={sumItem}>+</button>
+      <button className="btn btn-success" onClick={sumItem}>+</button>
           <label>{count}</label>
-      <button  onClick={resItem}>-</button>
-      <button onClick={handlerOnAdd}>Agregar </button>
+      <button className="btn btn-danger" onClick={resItem}>-</button>
+      <button className="btn btn-primary" onClick={handlerOnAdd}>Agregar </button>
         </div>
     )
 };
