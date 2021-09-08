@@ -14,11 +14,11 @@ function App() {
       <NavBar />
       <Switch>
 
-    <Route path='/'>
+    <Route exact path='/'>
       <ItemListContainer />
     </Route>
 
-        <Route exact path='/item/:id'>
+        <Route path='/item/:id'>
        <ItemDetailConteiner />
        </Route>
        
