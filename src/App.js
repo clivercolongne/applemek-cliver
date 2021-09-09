@@ -10,15 +10,16 @@ function App() {
   return (
     <div className="App">
     <BrowserRouter>
-    
+    <Route exact path='/'>
       <NavBar />
+      </Route>
       <Switch>
 
     <Route exact path='/'>
       <ItemListContainer />
     </Route>
 
-        <Route path='/item/:id'>
+        <Route exact path='/item/:id'>
        <ItemDetailConteiner />
        </Route>
        

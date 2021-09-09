@@ -1,26 +1,28 @@
 import React from "react"
+import NavBar from "./NavBar";
+import {Link} from "react-router-dom"
 
 const ItemDetail = ({ item }) => {
     console.log('detalle', item);
 
     return (
         <div>
+            <NavBar/>
             <div>
-                <label>Soy el detalle</label>
+                <h1>{item.nombre}</h1>
                 <div className='card w-50'>
                     <div className="container">
-                        <label>{item.nombre}</label>
+                        <h5>${item.precio}</h5>
                     </div>
                     <div className="container">
-                        <img src={item.pictureUrl} alt="soy una imagen" className="w-25" />
+                        <img src={item.pictureUrl} alt="soy una imagen" className="w-50" />
                         <br />
-                        <label>{item.descripcion}</label>
+                        <p>{item.descripcion}</p>
                     </div>
-                    <div className="container">
-                        <label>{item.precio}</label>
-                    </div>
+                    
                 </div>
             </div>
+           <Link to={`/`}><button>Volver al inicio</button></Link>
         </div>
     )
 }
