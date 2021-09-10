@@ -1,13 +1,13 @@
 import React from "react"
 
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const ItemDetail = ({ item }) => {
-    
+
 
     return (
         <div>
-            
+
             <div>
                 <h1>{item.nombre}</h1>
                 <div className='card w-50'>
@@ -19,10 +19,10 @@ const ItemDetail = ({ item }) => {
                         <br />
                         <p>{item.descripcion}</p>
                     </div>
-                    
+
                 </div>
             </div>
-           <Link to={`/`}><button>Volver al inicio</button></Link>
+            <Link to={`/`}><button>Volver al inicio</button></Link>
         </div>
     )
 }

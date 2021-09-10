@@ -4,8 +4,8 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 function CartWidget() {
     return (
         <div >
-        <ShoppingCartIcon HomeIcon style={{ fontSize:70 }}/>
-        
+            <ShoppingCartIcon HomeIcon style={{ fontSize: 70 }} />
+
         </div>
     )
 }

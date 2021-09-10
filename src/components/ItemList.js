@@ -5,18 +5,18 @@ import Item from './Item'
 
 
 
-const ItemList = ({items}) => {
-      
+const ItemList = ({ items }) => {
+
   return (
-      <div>
-        <h1>MIS PRODUCTOS</h1>
-        <ul>
-        {items.map((item)=>{
-          return <Item key={item.id} item={item}/>
-      })}
+    <div>
+      <h1>MIS PRODUCTOS</h1>
+      <ul>
+        {items.map((item) => {
+          return <Item key={item.id} item={item} />
+        })}
       </ul>
-         
-      </div>
+
+    </div>
   )
 }
 
