@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
     <BrowserRouter>
-    <Route exact path='/'>
+    <Route  path='/'>
       <NavBar />
       </Route>
       <Switch>

@@ -1,5 +1,5 @@
 import React from "react"
-import NavBar from "./NavBar";
+
 import {Link} from "react-router-dom"
 
 const ItemDetail = ({ item }) => {
@@ -7,7 +7,7 @@ const ItemDetail = ({ item }) => {
 
     return (
         <div>
-            <NavBar/>
+            
             <div>
                 <h1>{item.nombre}</h1>
                 <div className='card w-50'>
