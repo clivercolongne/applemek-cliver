@@ -3,7 +3,7 @@ import NavBar from "./NavBar";
 import {Link} from "react-router-dom"
 
 const ItemDetail = ({ item }) => {
-    console.log('detalle', item);
+    
 
     return (
         <div>
