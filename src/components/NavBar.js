@@ -17,10 +17,10 @@ function NavBar() {
                   categorias
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <Link to={'/category/celular'}><li><button className="btn">celulares</button></li></Link>
-                  <Link to={'/category/tablet'}><li><button className="btn">tablets</button></li></Link>
-                  <Link to={'/category/computadora'}><li><button className="btn">computadoras</button></li></Link>
-                  <Link to={'/category/accesorios'}><li><button className="btn">accesorios</button></li></Link>
+                  <Link to='/category/celular'><li><button className="btn">celulares</button></li></Link>
+                  <Link to='/category/tablet'><li><button className="btn">tablets</button></li></Link>
+                  <Link to='/category/computadora'><li><button className="btn">computadoras</button></li></Link>
+                  <Link to='/category/accesorios'><li><button className="btn">accesorios</button></li></Link>
                 </ul>
               </li>
             </ul>

@@ -20,30 +20,27 @@ const items = [
 ]
 
 export const ItemListContainer = () => {
-    let tarea = new Promise((resolve, reject) => {
-        setTimeout(() => {
-
-            items && items.length ? resolve(items) : reject("error 404 ")
-
-        }, 2000);
-
-
-    });
+    
     const [productos, setProductos] = useState([]);
-    const { category } = useParams()
+    const { categoryId } = useParams()
 
     useEffect(() => {
-        if (category === undefined) {
-            tarea.then((resolve) => { setProductos(resolve) })
+        let tarea = new Promise((resolve, reject) => {
+            setTimeout(() => {
+    
+                items && items.length ? resolve(items) : reject("error 404 ")
+    
+            }, 100);
+    
+    
+        });
+        if (categoryId ) {
+            tarea.then((resolve) => { setProductos(resolve.filter( r => categoryId === r.categoryId)) })
         } else {
-            tarea.then((resolve) => { setProductos(resolve.map(r => category === r.categoryId)) })
+            tarea.then((resolve) => { setProductos(resolve) })
         }
 
-    }, [])
-
-
-
-
+    }, [categoryId])
 
     return (
         <div>
