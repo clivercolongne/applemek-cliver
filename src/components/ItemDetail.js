@@ -1,9 +1,12 @@
 import React from "react"
-
 import { Link } from "react-router-dom"
+import ItemCount from "./ItemCount";
 
-const ItemDetail = ({ item }) => {
-
+const ItemDetail = ({ item  }) => {
+    const onAdd = (count) => {
+        console.log(`la cantidad es : ${count}`)
+        alert(`la cantidad es : ${count}`)
+      };
 
     return (
         <div>
@@ -22,6 +25,7 @@ const ItemDetail = ({ item }) => {
 
                 </div>
             </div>
+            <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
             <Link to={`/`}><button>Volver al inicio</button></Link>
         </div>
     )
