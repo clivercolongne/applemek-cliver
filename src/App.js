@@ -3,11 +3,14 @@ import './App.css';
 import ItemListContainer from './components/ItemListContainer';
 import NavBar from './components/NavBar';
 import ItemDetailConteiner from './components/ItemDetailConteiner'
+import Cart from './components/Cart'
+import { CartProvider } from './context/CartContext';
 
  
 
 function App() {
   return (
+    <CartProvider >
     <div className="App">
     <BrowserRouter>
     <Route  path='/'>
@@ -26,10 +29,15 @@ function App() {
        <ItemDetailConteiner />
        </Route>
        
+       <Route path='/cart'>
+          <Cart/>
+       </Route>
+
       </Switch>
            
      </BrowserRouter>
      </div>
+     </CartProvider>
   );
 }
 
