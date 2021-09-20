@@ -19,8 +19,9 @@ const ItemDetail = ({ item ,initial }) => {
         addItem(item,  quantity);
         setChangeButton(true)
         alert(`la cantidad es : ${quantity}`)
+        
       };
-
+console.log("item detail", item);
     return (
         <div>
 

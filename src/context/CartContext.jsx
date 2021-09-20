@@ -10,14 +10,14 @@ const CartProvider = ({ children }) => {
         
         setCart([...cart, { item:prod , quantity: quantity}])
     }
-    const removeItem  = () => {
+    const removeItem  = (item) => {
+        const deleteProduct = cart.filter((prod) => prod.item.id !== item.item.id);
 
+        setCart([...deleteProduct]);
+  
     }
     const clear  = () => {
-
-    }
-    const isInCart  = () => {
-
+        setCart([])
     }
 
 
@@ -28,7 +28,6 @@ const CartProvider = ({ children }) => {
             addItem,
             removeItem,
             clear,
-            isInCart
         }}
         >
             {children}

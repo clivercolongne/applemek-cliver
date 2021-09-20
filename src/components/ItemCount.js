@@ -17,7 +17,7 @@ const ItemCount = ({ stock, initial, onAdd,  changeButton }) => {
         onAdd(count)
         setCount(initial)
     }
-    console.log("soy count" ,count);
+    
     return (
         <div>
             <div >
