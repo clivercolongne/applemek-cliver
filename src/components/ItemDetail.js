@@ -6,7 +6,7 @@ import { CartContext } from "../context/CartContext";
 
 
 
-const ItemDetail = ({ item ,initial }) => {
+const ItemDetail = ({ item , }) => {
 
     const [changeButton, setChangeButton] = useState(false)
 
@@ -21,13 +21,14 @@ const ItemDetail = ({ item ,initial }) => {
         alert(`la cantidad es : ${quantity}`)
         
       };
-console.log("item detail", item);
+
     return (
         <div>
+            
 
             <div>
                 <h1>{item.nombre}</h1>
-                <div className='card w-50'>
+                <div className=' card mb-4 shadow-sm'>
                     <div className="container">
                         <h5>${item.precio}</h5>
                     </div>
