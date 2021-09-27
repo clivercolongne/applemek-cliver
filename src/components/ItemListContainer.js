@@ -24,16 +24,7 @@ export const ItemListContainer = () => {
     
     const [productos, setProductos] = useState([]);
     const { categoryId } = useParams()
-// const prom = consultaBaseDeDatos.get();
-        // prom.then((querySnapshot)=>{
-        // if (querySnapshot.size > 0) {
-        //     setProductos(querySnapshot.docs.map((doc) => {
-        //         return { id: doc.id, ...doc.data() };
-        //     }));
 
-        // }
-        // })
-        // console.log("itemss",);
     useEffect(() => {
         const baseDeDatos= getFirestore()
         const consultaBaseDeDatos= baseDeDatos.collection('items')
