@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import ItemList from './ItemList'
+import { getFirestore } from "../firebase/Firebase";
 
 export const items = [
     { id: 1, categoryId: "celular", nombre: "iphone 7 plus", descripcion: "el iphone 7 plus esta en exelente estado", stock: 2, precio: 50000, pictureUrl: 'https://s.yimg.com/uu/api/res/1.2/XyfcaIr4wNMfbbdwMdIVCw--~B/aD03ODg7dz0xNDAwO2FwcGlkPXl0YWNoeW9u/https://o.aolcdn.com/hss/storage/midas/17535de39889849e408e23953ad793d/204335506/iphone-7-plus-primeras-impresiones-016.JPG' },
@@ -12,7 +13,7 @@ export const items = [
     { id: 7, categoryId: "accesorios", nombre: "funda para iphone xs", descripcion: "Funda ecológica de paja de trigo, biodegradable, suave, flexible,funda para celular con múltiples funciones", stock: 10, precio: 1000, pictureUrl: 'https://ueeshop.ly200-cdn.com/u_file/UPAH/UPAH151/1908/products/29/66cd18f64f.jpg' },
     { id: 8, categoryId: "accesorios", nombre: "airpods", descripcion: "Su diseño a medida se ajusta a la forma del oido y ofrece un aislamiento ideal para la cancelación activa de ruido. Es como si dentro de tus oídos solo hubiera música.", stock: 2, precio: 5000, pictureUrl: 'https://www.ventasrosario.com.ar/wp-content/uploads/2019/09/Apple-AirPods-2-with-Wireless-Charging-Case-MRXJ2ZM-A-White-21032019-01-p.jpg' },
     { id: 9, categoryId: "accesorios", nombre: "cargador para celular", descripcion: "cargador para celular micro usb3.1 amp", stock: 15, precio: 1000, pictureUrl: 'https://apollo-virginia.akamaized.net/v1/files/7x5rpn3xhxy93-AR/image' },
-    { id: 10, categoryId: "accesorios", nombre: "Vidrio Templado Para Samsung A51 Full Glue", descripcion: "l vidrio tiene pegamento en toda su extension o sea es full glue, que no es lo mismo que vidrio curvo 5d/10d etc,", stock: 20, precio: 500, pictureUrl: 'https://http2.mlstatic.com/D_NQ_NP_946659-MLA42366181220_062020-O.jpg' },
+    { id: 10, categoryId: "accesorios", nombre: "Vidrio Templado Para Samsung A51 Full Glue", descripcion: "el vidrio tiene pegamento en toda su extension o sea es full glue, que no es lo mismo que vidrio curvo 5d/10d etc,", stock: 20, precio: 500, pictureUrl: 'https://http2.mlstatic.com/D_NQ_NP_946659-MLA42366181220_062020-O.jpg' },
     { id: 11, categoryId: "tablet", nombre: "Galaxy Tab 6", descripcion: "el nuevo Galaxy Tab 6 que acaba de descubrirse a través de unos renders oficiales que definen muy claramente cómo será y qué podremos esperar de él. Y salvo por la relación de aspecto de la pantalla, que es algo más panorámica que el 4:3 de los iPad Pro, tiene un aire general, acabado y formas que nos recuerdan a los tablets presentados por Apple el año pasado.", stock: 2, precio: 50000, pictureUrl: 'https://d500.epimg.net/cincodias/imagenes/2019/07/18/tablets/1563434994_525321_1563435056_noticia_normal.jpg' },
     { id: 12, categoryId: "tablet", nombre: "ipad 10.2", descripcion: "El nuevo iPad combina una extraordinaria capacidad con una versatilidad y facilidad de uso inigualables.", stock: 2, precio: 67000, pictureUrl: 'http://medias.musimundo.com/medias/00406046-143516-143516-01-143516-01.jpg-size515?context=bWFzdGVyfGltYWdlc3w1MjI1MnxpbWFnZS9qcGVnfGhjMC9oYWMvMTAyODM0OTc0NTU2NDYvMDA0MDYwNDYtMTQzNTE2LTE0MzUxNl8wMS0xNDM1MTZfMDEuanBnX3NpemU1MTV8MzA0NmMzNGFhZjUwMDY2YjY5MjU0MjlkMGJlYWMxODAxZjE5ODJhZmJlOTczZThmZjE2NTQxMjU5NjE2OTA4Yw' },
     { id: 13, categoryId: "tablet", nombre: "tablet Huawei MediaPad T3", descripcion: "Esta tablet es ideal para cada una de tus actividades: editar fotos, documentos, navegar por internet y ¡mucho más! Su diseño delgado, compacto y portátil es la combinación perfecta de rendimiento y versatilidad.", stock: 3, precio: 67000, pictureUrl: 'https://http2.mlstatic.com/D_NQ_NP_846872-MLA32649932432_102019-O.webp' },
@@ -25,21 +26,9 @@ export const ItemListContainer = () => {
     const { categoryId } = useParams()
 
     useEffect(() => {
-        let tarea = new Promise((resolve, reject) => {
-            setTimeout(() => {
-    
-                items && items.length ? resolve(items) : reject("error 404 ")
-    
-            }, 100);
-    
-    
-        });
-        if (categoryId ) {
-            tarea.then((resolve) => { setProductos(resolve.filter( r => categoryId === r.categoryId)) })
-        } else {
-            tarea.then((resolve) => { setProductos(resolve) })
-        }
-
+        const baseDeDatos= getFirestore()
+        const consultaBaseDeDatos= baseDeDatos.collection('items')
+        console.log(consultaBaseDeDatos);
     }, [categoryId])
 
     return (
