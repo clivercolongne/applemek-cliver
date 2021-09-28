@@ -6,7 +6,7 @@ import { CartContext } from "../context/CartContext";
 
 
 
-const ItemDetail = ({ item , }) => {
+const ItemDetail = ({ item }) => {
 
     const [changeButton, setChangeButton] = useState(false)
 
