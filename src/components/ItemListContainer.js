@@ -6,30 +6,30 @@ import { getFirestore } from "../firebase/Firebase";
 
 
 export const ItemListContainer = () => {
-    
+
     const [productos, setProductos] = useState([]);
     const { categoryId } = useParams()
 
     useEffect(() => {
-        const baseDeDatos= getFirestore()
-        const consultaBaseDeDatos= baseDeDatos.collection('items')
-        const conditionQuery =  categoryId ? 
-                consultaBaseDeDatos.where('categoryId', '==', categoryId) 
-            : 
-                consultaBaseDeDatos 
-      
+        const baseDeDatos = getFirestore()
+        const consultaBaseDeDatos = baseDeDatos.collection('items')
+        const conditionQuery = categoryId ?
+            consultaBaseDeDatos.where('categoryId', '==', categoryId)
+            :
+            consultaBaseDeDatos
+
         conditionQuery.get()
-        .then(data => {
-            if(data.size===0){
-                console.log('no hay nada')
-            }
-            setProductos( data.docs.map(item => ( {id: item.id, ...item.data()} ) ) )                
-            console.log(categoryId)
-        })  
-        
+            .then(data => {
+                if (data.size === 0) {
+                    
+                }
+                setProductos(data.docs.map(item => ({ id: item.id, ...item.data() })))
+                
+            })
+
     }, [categoryId])
 
-    
+
 
     return (
         <div>

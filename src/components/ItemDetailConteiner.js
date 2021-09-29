@@ -7,20 +7,20 @@ import { getFirestore } from "../firebase/Firebase";
 
 
 function ItemDetailConteiner({ item }) {
-    
+
     const { id } = useParams()
     const [itemDetail, setItemDetail] = useState({});
 
-    
+
     useEffect(() => {
         const db = getFirestore()
         db.collection('items').doc(id).get()
-        .then(resp => {
-            if(resp.exists){
-                setItemDetail({id: resp.id, ...resp.data()})
-            }
-        } )
-      
+            .then(resp => {
+                if (resp.exists) {
+                    setItemDetail({ id: resp.id, ...resp.data() })
+                }
+            })
+
     }, [])
 
 

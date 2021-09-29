@@ -1,4 +1,4 @@
-import React ,{ useContext, useState} from "react"
+import React, { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 import ItemCount from "./ItemCount";
 import { CartContext } from "../context/CartContext";
@@ -10,21 +10,21 @@ const ItemDetail = ({ item }) => {
 
     const [changeButton, setChangeButton] = useState(false)
 
-    const {addItem} = useContext(CartContext)
-    
-    
+    const { addItem } = useContext(CartContext)
 
-    const onAdd = ( quantity ) => {
-        
-        addItem(item,  quantity);
+
+
+    const onAdd = (quantity) => {
+
+        addItem(item, quantity);
         setChangeButton(true)
         alert(`la cantidad es : ${quantity}`)
-        
-      };
+
+    };
 
     return (
         <div>
-            
+
 
             <div>
                 <h1>{item.nombre}</h1>
@@ -41,16 +41,16 @@ const ItemDetail = ({ item }) => {
                 </div>
             </div>
             {
-                    !changeButton &&
-                    <ItemCount stock={item.stock} initial={0} onAdd={onAdd} changeButton={changeButton} />}
-                {
-                    changeButton &&
-                    <Link to='/cart'>
-                        <button>terminar tu compra</button>
-                    </Link>
-                }
-            
-            
+                !changeButton &&
+                <ItemCount stock={item.stock} initial={0} onAdd={onAdd} changeButton={changeButton} />}
+            {
+                changeButton &&
+                <Link to='/cart'>
+                    <button>terminar tu compra</button>
+                </Link>
+            }
+
+
             <Link to={`/`}><button>Volver al inicio</button></Link>
         </div>
     )

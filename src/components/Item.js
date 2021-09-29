@@ -18,7 +18,7 @@ function Item({ item }) {
         <p> {item.descripcion}</p>
       </div>
 
-     
+
       <Link to={`/item/${item.id}`}><button>detalle</button></Link>
 
 
