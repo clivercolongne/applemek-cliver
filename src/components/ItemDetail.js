@@ -26,32 +26,33 @@ const ItemDetail = ({ item }) => {
         <div>
 
 
-            <div>
-                <h1>{item.nombre}</h1>
-                <div className=' card mb-4 shadow-sm'>
-                    <div className="container">
-                        <h5>${item.precio}</h5>
-                    </div>
-                    <div className="container">
-                        <img src={item.pictureUrl} alt="soy una imagen" className="w-50" />
-                        <br />
-                        <p>{item.descripcion}</p>
-                    </div>
-
+            
+            <div class="col-md-4 ubicacionDiv">
+          <div class="card mb-4 shadow-sm">
+            <img src={item.pictureUrl} className="card-img-top" alt="producto"/>
+            <div class="card-body">
+              <h5 class="card-title">{item.nombre}</h5>
+              <h5>${item.precio}</h5>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
                 </div>
+              </div>
             </div>
+          
+        
             {
                 !changeButton &&
                 <ItemCount stock={item.stock} initial={0} onAdd={onAdd} changeButton={changeButton} />}
             {
                 changeButton &&
                 <Link to='/cart'>
-                    <button>terminar tu compra</button>
+                    <button className="btn btn-success ubiBoton">Terminar tu compra</button>
                 </Link>
             }
 
-
-            <Link to={`/`}><button>Volver al inicio</button></Link>
+            <Link to={`/`}><button className="btn btn-warning ubiBoton">Volver al inicio</button></Link>
+           </div>
+</div> 
         </div>
     )
 }

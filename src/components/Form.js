@@ -22,12 +22,12 @@ const Form = (props) => {
         orden.buyer = { comprador };
         orden.total = precioTotal;
         orden.items = cart.map((cartItem) => {
-            const id = cartItem.prod.id;
-            const titulo = cartItem.prod.titulo;
+            const id = cartItem.item.id;
+            const titulo = cartItem.item.titulo;
             return { id, titulo }
         })
 
-        ordersCollection.add(orden)
+         ordersCollection.add(orden)
             .then((IdDocument) => {
                 setIdOrden(IdDocument.id)
             })

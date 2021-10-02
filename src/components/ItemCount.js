@@ -21,11 +21,11 @@ const ItemCount = ({ stock, initial, onAdd, changeButton }) => {
     return (
         <div>
             <div >
-                <button className="btn btn-success" onClick={sumItem}>+</button>
+                <button className="btn btn-success ubiBoton" onClick={sumItem}>+</button>
                 <label>{count}</label>
-                <button className="btn btn-danger" onClick={resItem}>-</button>
+                <button className="btn btn-danger ubiBoton" onClick={resItem}>-</button>
                 {
-                    !changeButton && <button onClick={handleOnAdd}>Agregar al carrito</button>
+                    !changeButton && <button className="btn btn-success ubiBoton" onClick={handleOnAdd}>Agregar al carrito</button>
                 }
             </div>
         </div>

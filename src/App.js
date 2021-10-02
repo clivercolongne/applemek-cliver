@@ -6,7 +6,7 @@ import ItemDetailConteiner from './components/ItemDetailConteiner'
 import Cart from './components/Cart'
 import { CartProvider } from './context/CartContext';
 import Form from './components/Form';
-
+import Footer from './components/Footer';
 
 
 function App() {
@@ -39,7 +39,10 @@ function App() {
 
 
           </Switch>
-
+          <Route path='/'>
+            <Footer/>
+          </Route>
+            
         </BrowserRouter>
       </div>
     </CartProvider>

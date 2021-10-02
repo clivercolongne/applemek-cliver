@@ -1,12 +1,31 @@
+.footer {
+  width: 100%;
+ }
 .tamanoCard{
     width: 18rem;
-    padding:3px
 }
 .ubicacionDiv{
-    margin-left: 50%;
+  margin-left: 33%;
+}
+.ubicacionBoton{
+  
+  margin-left: 44%;
+}
+.ubiBoton{
+  margin: 10px;
 }
 .titulo{
-    text-decoration: none;
+  text-decoration: none;
+  color: black;
+}
+.ubicacionFooter{
+  text-align: center;
+}
+.ubicacionFooter1{
+  text-align: center;
+}
+.ubicacionFooter2{
+  text-align: center;
 }
 #lblCartCount {
     font-size: 15px;
