@@ -21,7 +21,7 @@ function ItemDetailConteiner({ item }) {
                 }
             })
 
-    }, [])
+    }, [id])
 
 
     return (

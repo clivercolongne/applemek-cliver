@@ -1,81 +1,73 @@
 import React, { useState, useContext } from 'react';
+import firebase from "firebase";
 import Modal from "react-bootstrap/Modal";
 import { getFirestore } from "../firebase/Firebase";
 import { CartContext } from "../context/CartContext";
-
 const Form = (props) => {
-
     const { cart, clear, precioTotal } = useContext(CartContext);
-
-    const [nombre, setNombre] = useState("");
-    const [telefono, setTelefono] = useState("");
-    const [email, setEmail] = useState("");
-    const [idOrden, setIdOrden] = useState(null);
-
-    const generarOrden = (e) => {
-        e.preventDefault()
-        const comprador = { nombre, telefono, email };
-        const db = getFirestore();
-        const ordersCollection = db.collection('orders');
-
-        let orden = {};
-        orden.buyer = { comprador };
-        orden.total = precioTotal;
-        orden.items = cart.map((cartItem) => {
-            const id = cartItem.item.id;
-            const titulo = cartItem.item.titulo;
-            return { id, titulo }
-        })
-
-         ordersCollection.add(orden)
-            .then((IdDocument) => {
-                setIdOrden(IdDocument.id)
-            })
-        
-
+    const initialForm ={
+        nombre:"",
+        email:"",
+        tel:"",
+    };
+  const [formData, setFormData] = useState(initialForm)
+  function handleChange(e){
+    setFormData(
+        {
+        ...formData,
+        [e.target.name]: e.target.value
     }
+    )
+  }
+  function handleSubmit(e)
+    {
+    e.preventDefault()
+    const newOrder={
+        buyer: formData,
+        items: cart,
+        date: firebase.firestore.Timestamp.fromDate(new Date()),
+        total: precioTotal()
+                    }
+    console.log(newOrder)
+    const db = getFirestore()
+    const orders = db.collection('orders')
+   orders.add(newOrder)
+  .then(resp => alert(`la orden de compra es: ${resp.id}`))
+  .catch(err => console.log(err))
+  .finally(()=>{
+       setFormData(initialForm)
+     clear()
+  })
+  }
 
     return (
-
         <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
             <Modal.Header closeButton>
                 <Modal.Title>Ingrese los datos para generar su orden de compra</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <fieldset>
-                    <form onSubmit={generarOrden} >
+                    <form onSubmit={handleSubmit}  onChange={handleChange} >
                         <label>Nombre:</label>
-                        <input
-                            value={nombre}
-                            type="text"
-                            onChange={(e) => setNombre(e.target.value)}
-                        />
+                        <input type="text" placeholder="ingresa nombre" name="nombre" value={formData.nombre}/>
+                      
                         <label>Email:</label>
-                        <input
-                            value={email}
-                            type="text"
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
+                        <input type="email" placeholder="ingresa email" name="email" value={formData.email}/>
                         <label>Telefono:</label>
-                        <input
-                            value={telefono}
-                            type="text"
-                            onChange={(e) => setTelefono(e.target.value)}
-                        />
+                        <input type="text"  placeholder="ingresa tel" name="tel" value={formData.tel}/>
                         <button variant="outline-info" type="submit" className="mt-auto" >
-                            Comprar
+                            Compra"
                         </button>
                     </form>
                 </fieldset>
             </Modal.Body>
             <Modal.Footer>
                 <button variant="outline-info" type="submit" className="mt-auto" onClick={clear}>
-                    cerrar
+                    cerra"
                 </button>
             </Modal.Footer>
-            <small>{idOrden ? ` Su orden fue generada con el ID: ${idOrden}` : null}</small>
+
         </Modal>
     );
 }
-
 export default Form;
