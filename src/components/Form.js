@@ -27,7 +27,7 @@ const Form = (props) => {
             date: firebase.firestore.Timestamp.fromDate(new Date()),
             total: precioTotal()
         }
-        console.log(newOrder)
+        
         const db = getFirestore()
         const orders = db.collection('orders')
         orders.add(newOrder)
